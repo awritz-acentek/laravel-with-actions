@@ -1,0 +1,6 @@
+ARG APP_IMAGE_URL=gitlab.acentek.net:5050/acentek/software-development/incidents/main:latest
+FROM ${APP_IMAGE_URL} AS laravel
+
+FROM nginx:alpine
+
+COPY --from=laravel /var/www/html/public /var/www/html/public
